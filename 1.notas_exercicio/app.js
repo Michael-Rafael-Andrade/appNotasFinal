@@ -3,6 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+// Exemplo de como registrar o helper 'eq'
+// Se você usa o 'hbs' como módulo:
+const hbs = require('hbs');
+
+// Registro do Helper 'eq' (para comparação de igualdade)
+hbs.registerHelper('eq', function (arg1, arg2) {
+  return (arg1 == arg2);
+});
+
+// ... (o resto da sua configuração do Express/app.js)
 
 var rotasIndex = require('./routes/rotasIndex');
 var rotasNota = require('./routes/rotasNota');
@@ -25,12 +35,12 @@ app.use('/nota', rotasNota);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

@@ -1,34 +1,53 @@
 <div class="container-fluid">
     {{!-- 1. Se NÃO houver notas, exibe a mensagem --}}
     {{#unless notas}}
-    <p>Ainda não há nenhuma nota cadastrada.</p>
-    <a href="/nota/cria">Cadastre a sua primeira nota.</a>
+    <div class="mt-5 text-center">
+        <p>Ainda não há nenhuma nota cadastrada.</p>
+        <a href="/nota/cria" class="btn btn-primary">Cadastre a sua primeira nota</a>
+    </div>
     {{/unless}}
 
-    {{!-- 2. Se HOUVER notas, exibe UMA ÚNICA tabela --}}
+    {{!-- 2. Se HOUVER notas, exibe a tabela --}}
     {{#if notas}}
-
-    <table border="1">
-        {{!-- O Cabeçalho (<th>) aparece UMA VEZ --}}
+    <table class="table table-striped table-bordered text-center">
+        <thead>
             <tr>
-                <th>Chave</th>
-                <th>Título</th>
-                <th>Alterar Status</th>
+                {{!-- 1. COLUNA CHAVE: Visível apenas em Telas Grandes (lg) e maiores --}}
+                <th class="d-none d-lg-table-cell" style="width: 20%;">Chave</th>
+
+                {{!-- 2. COLUNA TÍTULO: Visível em todas as telas (não precisa de classe de display, mas definimos
+                largura fixa) --}}
+                <th style="width: 60%;">Título</th>
+
+                {{!-- 3. COLUNA MUDAR STATUS: Visível em Telas Médias (md) e maiores --}}
+                <th class="d-none d-md-table-cell" style="width: 20%;">Mudar Status</th>
             </tr>
+        </thead>
 
+        <tbody>
             {{#each notas}}
-            {{!-- Cada Linha de Dados (
-        <td>) se repete para CADA nota --}}
             <tr>
-                <td>{{this.chave}}</td>
-                <td>
+                {{!-- 1. CÉLULA CHAVE (Oculta em SM e MD, Visível em LG) --}}
+                <td class="d-none d-lg-table-cell">{{this.chave}}</td>
+
+                {{!-- 2. CÉLULA TÍTULO (Sempre Visível) --}}
+                <td class="text-start">
                     <a href="/nota/consulta/{{this.chave}}">{{this.titulo}}</a>
                 </td>
-                <td>
-                    <a href="/nota/altera/{{this.chave}}">{{this.status}}</a>
+
+                {{!-- 3. CÉLULA MUDAR STATUS (Oculta em SM, Visível em MD e LG) --}}
+                <td class="d-none d-md-table-cell">
+                    <a href="/nota/mudaStatus/{{this.chave}}" title="Mudar Status">
+                        {{#if (eq this.status 'lida')}}
+                        <i class="bi bi-envelope-open-fill text-secondary"></i>
+                        {{else}}
+                        <i class="bi bi-envelope-fill text-primary"></i>
+                        {{/if}}
+                    </a>
                 </td>
             </tr>
             {{/each}}
+        </tbody>
     </table>
     {{/if}}
 </div>

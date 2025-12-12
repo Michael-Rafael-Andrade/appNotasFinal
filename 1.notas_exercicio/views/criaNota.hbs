@@ -1,29 +1,43 @@
-<h2>Criação de uma nova nota de texto</h2>
-<form method='POST' action='/nota/cria'>
-    
-    {{!-- Campo CHAVE --}}
-    <div class="mb-3">
-        <label for="chave" class="form-label">Chave</label>
-        <input type='text' name='chave' value="" class="form-control" required>
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4">Criação de uma nova nota de texto</h1>
     </div>
+</div>
 
-    {{!-- Campo TÍTULO --}}
+<form action="/nota/cria" method="post">
+    
+    {{!-- Linha do Grid para agrupar campos lado a lado (Chave e Importância) --}}
+    <div class="row">
+        
+        {{!-- 1. CAMPO CHAVE (Ocupa 6 colunas em telas médias+, 12 em telas pequenas) --}}
+        <div class="col-12 col-md-6 mb-3">
+            <label for="chave" class="form-label">Chave</label>
+            <input type="text" class="form-control" id="chave" name="chave" required>
+        </div>
+
+        {{!-- 2. CAMPO IMPORTÂNCIA (Ocupa 6 colunas em telas médias+, 12 em telas pequenas) --}}
+        <div class="col-12 col-md-6 mb-3">
+            <label for="importancia" class="form-label">Importância da Nota (1 a 5)</label>
+            <input type="number" class="form-control" id="importancia" name="importancia" min="1" max="5" value="3" required>
+        </div>
+    </div>
+    
+    {{!-- 3. CAMPO TÍTULO (Ocupa 12 colunas, largura total) --}}
     <div class="mb-3">
         <label for="titulo" class="form-label">Título</label>
-        <input type="text" name='titulo' value="" class="form-control" required>
+        <input type="text" class="form-control" id="titulo" name="titulo" required>
     </div>
-    
-    {{!-- Campo TEXTO DA NOTA (Textarea) --}}
+
+    {{!-- 4. CAMPO TEXTO DA NOTA (Ocupa 12 colunas, largura total) --}}
     <div class="mb-3">
         <label for="texto" class="form-label">Texto da Nota</label>
-        <textarea rows="5" name='texto' class="form-control"></textarea>
+        <textarea class="form-control" id="texto" name="texto" rows="6"></textarea>
     </div>
-    
-    <div class="d-flex justify-content-start gap-2 mt-4">
-        {{!-- Botão CRIAR (Cor Verde de sucesso) --}}
-        <button type="submit" class="btn btn-success">Criar</button>
 
-        {{!-- Botão CANCELAR (ou Voltar, leva para a tela principal) --}}
+    {{!-- 5. BOTÕES DE AÇÃO --}}
+    <div class="d-flex gap-2 mt-4">
+        <button type="submit" class="btn btn-success">Criar</button>
         <a href="/" class="btn btn-secondary">Cancelar</a>
     </div>
+
 </form>

@@ -1,6 +1,25 @@
-<h1>Sobre o aplicativo</h1>
-<h4>Este é um apicativo criado com o objetivo de gerenciar notas de texto.</h4>
-<p>Ele foi criado na disciplina de Desenvolvimento Web II do curso de Graduação em Sistemas de Informação</p>
-<p>IF Sudeste MG - Campus Manhuaçu</p>
-<br><br>
-<a href="/">Voltar</a>
+<div class="text-center">
+
+    {{!-- Título Principal: Maior e com margem inferior --}}
+    <h1 class="display-4 mb-3">Sobre o Aplicativo</h1>
+
+    {{!-- Bloco de Conteúdo (Centralizado e com Largura Definida) --}}
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {{!-- Parágrafo de Destaque --}}
+            <p class="lead">Este é um aplicativo criado com o objetivo de **gerenciar notas de texto**.</p>
+
+            {{!-- Linha de Separação --}}
+            <hr class="my-4">
+
+            <h4 class="text-muted">Desenvolvimento</h4>
+            <p>Ele foi criado na disciplina de Desenvolvimento Web II do curso de Graduação em Sistemas de Informação.
+            </p>
+            <p><strong>IF Sudeste MG - Campus Manhuaçu</strong></p>
+        </div>
+    </div>
+
+    <br><br>
+    {{!-- Botão de Ação "Voltar" --}}
+    <a href="/" class="btn btn-outline-secondary">Voltar</a>
+</div>

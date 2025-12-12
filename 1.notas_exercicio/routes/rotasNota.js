@@ -21,6 +21,6 @@ router.post('/altera/:chave_nota', controllerNota.altera_post);
 router.get('/deleta/:chave_nota', controllerNota.deleta);
 
 /* NOTA LIDA NÃO LIDA */
-router.get('/nota/mudaStatus/:chave_nota', controllerNota.mudaStatus);
+router.get('/mudaStatus/:chave_nota', controllerNota.mudaStatus);
 
 module.exports = router;
