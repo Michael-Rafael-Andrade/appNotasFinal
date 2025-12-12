@@ -1,0 +1,53 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+a {
+  color: #00B7FF;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px 15px;
+  text-align: center;
+
+  /* 2. Garante que palavras longas sejam quebradas dentro das células fixas */
+  word-break: break-all;
+
+  /* Você pode manter o min-width: 100px; para garantir um espaço mínimo */
+  min-width: 100px;
+}
+
+td,
+th {
+  text-align: center;
+}
+
+table {
+  margin-top: 80px;
+  width: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+hr {
+  /* Remove a borda 3D nativa do navegador */
+  border: none;
+  /* Define a espessura da linha */
+  height: 1px;
+  /* Define a cor de fundo (que funciona como a cor da linha) */
+  background-color: #ccc;
+  /* Adiciona margem vertical (20px) e centraliza a linha (auto) */
+  margin: 20px auto;
+  /* Garante que a linha não se estenda por toda a largura */
+  width: 50%;
+}
