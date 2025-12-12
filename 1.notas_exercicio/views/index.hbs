@@ -1,30 +1,34 @@
-{{!-- 1. Se NÃO houver notas, exibe a mensagem --}}
-{{#unless notas}}
-<p>Ainda não há nenhuma nota cadastrada.</p>
-<a href="/nota/cria">Cadastre a sua primeira nota.</a>
-{{/unless}}
+<div class="container-fluid">
+    {{!-- 1. Se NÃO houver notas, exibe a mensagem --}}
+    {{#unless notas}}
+    <p>Ainda não há nenhuma nota cadastrada.</p>
+    <a href="/nota/cria">Cadastre a sua primeira nota.</a>
+    {{/unless}}
 
-{{!-- 2. Se HOUVER notas, exibe UMA ÚNICA tabela --}}
-{{#if notas}}
-<table border="1">
-    {{!-- O Cabeçalho (<th>) aparece UMA VEZ --}}
-    <tr>
-        <th>Chave</th>
-        <th>Título</th>
-        <th>Alterar Status</th>
-    </tr>
+    {{!-- 2. Se HOUVER notas, exibe UMA ÚNICA tabela --}}
+    {{#if notas}}
 
-    {{#each notas}}
-    {{!-- Cada Linha de Dados (<td>) se repete para CADA nota --}}
-    <tr>
-        <td>{{this.chave}}</td>
-        <td>
-            <a href="/nota/consulta/{{this.chave}}">{{this.titulo}}</a>
-        </td>
-        <td>
-            <a href="/nota/altera/{{this.chave}}">{{this.status}}</a>
-        </td>
-    </tr>
-    {{/each}}
-</table>
-{{/if}}
+    <table border="1">
+        {{!-- O Cabeçalho (<th>) aparece UMA VEZ --}}
+            <tr>
+                <th>Chave</th>
+                <th>Título</th>
+                <th>Alterar Status</th>
+            </tr>
+
+            {{#each notas}}
+            {{!-- Cada Linha de Dados (
+        <td>) se repete para CADA nota --}}
+            <tr>
+                <td>{{this.chave}}</td>
+                <td>
+                    <a href="/nota/consulta/{{this.chave}}">{{this.titulo}}</a>
+                </td>
+                <td>
+                    <a href="/nota/altera/{{this.chave}}">{{this.status}}</a>
+                </td>
+            </tr>
+            {{/each}}
+    </table>
+    {{/if}}
+</div>
