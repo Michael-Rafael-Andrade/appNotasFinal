@@ -1,10 +1,29 @@
 <h2>Criação de uma nova nota de texto</h2>
 <form method='POST' action='/nota/cria'>
-    <p><label for="chave">Chave</label></p>
-    <p><input type='text' name='chave' value="" size="30"/></p>
-    <p><label for="titulo">Título</label></p>
-    <p><input type='text' name='titulo' value="" size="60"/></p>
-    <p><label for="texto">Texto da Nota</label></p>
-    <p><textarea row="5" cols="57" name='texto'></textarea></p>
-    <button type="submit">Criar</button>
+    
+    {{!-- Campo CHAVE --}}
+    <div class="mb-3">
+        <label for="chave" class="form-label">Chave</label>
+        <input type='text' name='chave' value="" class="form-control" required>
+    </div>
+
+    {{!-- Campo TÍTULO --}}
+    <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" name='titulo' value="" class="form-control" required>
+    </div>
+    
+    {{!-- Campo TEXTO DA NOTA (Textarea) --}}
+    <div class="mb-3">
+        <label for="texto" class="form-label">Texto da Nota</label>
+        <textarea rows="5" name='texto' class="form-control"></textarea>
+    </div>
+    
+    <div class="d-flex justify-content-start gap-2 mt-4">
+        {{!-- Botão CRIAR (Cor Verde de sucesso) --}}
+        <button type="submit" class="btn btn-success">Criar</button>
+
+        {{!-- Botão CANCELAR (ou Voltar, leva para a tela principal) --}}
+        <a href="/" class="btn btn-secondary">Cancelar</a>
+    </div>
 </form>
