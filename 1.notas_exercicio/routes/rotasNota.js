@@ -9,13 +9,13 @@ router.get('/cria', controllerNota.cria_get);
 router.post('/cria', controllerNota.cria_post);
 
 /* GET consulta Nota. */
-router.get('/consulta/:chave_nota', controllerNota.consulta); // parte da roda é passada como parametro depois dos dois pontos
+router.get('/consulta/:id', controllerNota.consulta); // parte da roda é passada como parametro depois dos dois pontos
 
 /* GET Altera Nota. */
-router.get('/altera/:chave_nota', controllerNota.altera_get); 
+router.get('/altera/:id', controllerNota.altera_get); 
 
 /* POST Altera Nota. */
-router.post('/altera/:chave_nota', controllerNota.altera_post);
+router.post('/altera/:id', controllerNota.altera_post);
 
 /* GET Exclui Nota. */
 router.get('/deleta/:chave_nota', controllerNota.deleta);
