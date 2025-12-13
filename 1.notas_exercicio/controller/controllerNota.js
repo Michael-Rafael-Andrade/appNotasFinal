@@ -14,13 +14,16 @@ exports.cria_get = async function (req, res) {
 // cria e já exporta a função que será responsável pela criação de nota
 exports.cria_post = async function (req, res) {
     // obtém as informações do formulário
-    var chave = req.body.chave  // objeto express encapsula todos os campos do form no req.body e para acessar utilize o nome do campo.
-    var titulo = req.body.titulo
-    var texto = req.body.texto
-    var status = req.body.status
-
+    // var chave = req.body.chave  // objeto express encapsula todos os campos do 
+    const nova_nota = {
+        // form no req.body e para acessar utilize o nome do campo.
+        titulo: req.body.titulo,
+        texto: req.body.texto,
+        importancia: Number(req.body.importancia),
+        // não precisamos passar o campo 'lida' por ter valor padrão
+    }
     // cria a nota nota
-    await notas.cria(chave, titulo, texto);
+    await Nota.create(nova_nota);
 
     // redireciona para a página principal
     res.redirect('/');

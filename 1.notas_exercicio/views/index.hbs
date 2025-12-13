@@ -28,16 +28,16 @@
             {{#each notas}}
             <tr>
                 {{!-- 1. CÉLULA CHAVE (Oculta em SM e MD, Visível em LG) --}}
-                <td class="d-none d-lg-table-cell">{{this.chave}}</td>
+                <td class="d-none d-lg-table-cell">{{this.id}}</td>
 
                 {{!-- 2. CÉLULA TÍTULO (Sempre Visível) --}}
                 <td class="text-start">
-                    <a href="/nota/consulta/{{this.chave}}">{{this.titulo}}</a>
+                    <a href="/nota/consulta/{{this.id}}">{{this.titulo}}</a>
                 </td>
 
                 {{!-- 3. CÉLULA MUDAR STATUS (Oculta em SM, Visível em MD e LG) --}}
                 <td class="d-none d-md-table-cell">
-                    <a href="/nota/mudaStatus/{{this.chave}}" title="Mudar Status">
+                    <a href="/nota/mudaStatus/{{this.id}}" title="Mudar Status">
                         {{#if (eq this.status 'lida')}}
                         <i class="bi bi-envelope-open-fill text-secondary"></i>
                         {{else}}
