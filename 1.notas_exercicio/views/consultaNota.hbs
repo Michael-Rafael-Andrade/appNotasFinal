@@ -1,12 +1,18 @@
 <h2 class="titulo">Consulta a Informação da Nota</h2>
 <br>
-<p><b>{{titulo}}</b></p>
-<p>{{texto}}</p>
+<p><b>{{nota.titulo}}</b></p>
+<p>{{nota.texto}}</p>
 <p><b>ID: </b>{{id}}</p>
-<p><b>Importância: </b>{{importancia}}</p>
+<p><b>Importância: </b>{{nota.importancia}}</p>
+<p><b>Tags:</b>
+    {{#each nota.tags}}
+        <span><i class="bi bi-tag"></i> {{this.tag}}</span>
+    {{/each}}
+</p>
+<p><b>Usuário: </b>{{nota.usuario}}</p>
 <hr>
 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExclusao">Deletar</button>
-<a href="/nota/altera/{{id}}"><button class="btn btn-sucess">Alterar</button></a>
+<a href="/nota/altera/{{nota.id}}"><button class="btn btn-success">Alterar</button></a>
 <br><br><br>
 <a href="/">Voltar</a>
 

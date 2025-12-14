@@ -20,7 +20,19 @@ router.post('/altera/:id', controllerNota.altera_post);
 /* GET Exclui Nota. */
 router.get('/deleta/:id', controllerNota.deleta);
 
-/* NOTA LIDA NÃO LIDA */
-router.get('/mudaStatus/:id', controllerNota.mudaStatus);
+/* GET Altera status da Nota para lida. */
+router.get('/lida/:id', controllerNota.lida);
+
+/* GET Altera status da Nota para não lida. */
+router.get('/naolida/:id', controllerNota.naolida);
+
+/* GET Povoamento de dados no banco de dados. */
+router.get('/povoamento', controllerNota.povoamento);
+
+/* GET Relatório de dados cadastros. */
+router.get('/relatorio', controllerNota.relatorio);
+
+// /* NOTA LIDA NÃO LIDA */
+// router.get('/mudaStatus/:id', controllerNota.mudaStatus);
 
 module.exports = router;
