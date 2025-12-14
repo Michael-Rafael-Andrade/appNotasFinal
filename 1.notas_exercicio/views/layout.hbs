@@ -22,40 +22,50 @@
 
       {{!-- Marca/Logo com Ícone --}}
       <a class="navbar-brand" href="/">
-        <i class="bi bi-journal-text me-2"></i> Notas
+        <h3><i class="bi bi-file-text" style="font-size: 1.7rem; color: #000000e6;"></i></h3>
       </a>
 
       {{!-- Botão Hamburguer para Telas Pequenas --}}
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       {{!-- Conteúdo Colapsável (Links e Botão) --}}
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/">
+            <i class="bi bi-house"></i> Home
+          </a>
+          <a class="nav-link" href="/sobre">
+            <i class="bi bi-info-square"></i> Sobre
+          </a>
+          <a class="nav-link" href="/nota/cria">
+            <i class="bi bi-envelope-plus"></i> Criar Nota
+          </a>
+          <a class="nav-link" href="/nota/povoamento">
+            <i class="bi bi-file-plus"></i> Criar Dados
+          </a>
+          <a class="nav-link" href="/nota/relatorio">
+            <i class="bi bi-file-ruled"></i> Relatório
+          </a>
+          <a class="nav-link" href="/nota/importantes">
+            <i class="bi bi-exclamation-circle-fill"></i> Notas Importantes
+          </a>
+        </div>
 
-          {{!-- Link Home com Ícone --}}
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="bi bi-house-door-fill me-1"></i> Home
-            </a>
-          </li>
+        <form class="d-flex" method="post" style="align-items: baseline;">
+          {{#if pesquisa}}
+          <input class="form-control me-2" type="search" name="termo" placeholder="Pesquisa por Título" size="30"
+            value="{{pesquisa}}" />
+          <a class="btn btn-outline-danger" href="/" style="margin-top: 20px;"><i class="bi bi-x-circle"></i></a>
+          {{else}}
+          <input class="form-control me-2" type="search" name="termo" placeholder="Pesquisa por Título" size="30" />
+          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+          {{/if}}
+        </form>
 
-          {{!-- Link Sobre com Ícone --}}
-          <li class="nav-item">
-            <a class="nav-link" href="/sobre">
-              <i class="bi bi-info-circle-fill me-1"></i> Sobre
-            </a>
-          </li>
-        </ul>
-
-        {{!-- Botão Criar Nota (Alinhado à Direita) --}}
-        <a class="btn btn-outline-primary" href="/nota/cria">
-          <i class="bi bi-envelope-plus-fill me-1"></i> Criar Nota
-        </a>
       </div>
-    </div>
   </nav>
 
   {{!-- CORREÇÃO CRUCIAL: Envolve o body em um contêiner para centralizar e adicionar margem --}}

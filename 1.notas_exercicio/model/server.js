@@ -1,12 +1,12 @@
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize(
-    'relacionamentos', // mudando apenas o banco de dados (criado previamente no Mysql)
-    'master',
-    'user@master',
-    // 'notas', // nome da base de dados
-    // 'master', // nome do usuário do banco de dados
-    // 'user@master', // senha do usuário
+    // 'relacionamentos', // mudando apenas o banco de dados (criado previamente no Mysql)
+    // 'master',
+    // 'user@master',
+    'notas', // nome da base de dados
+    'master', // nome do usuário do banco de dados
+    'user@master', // senha do usuário
     {
         host: 'localhost', // endereço do BD
         dialect: 'mysql' // dialeto do BD
