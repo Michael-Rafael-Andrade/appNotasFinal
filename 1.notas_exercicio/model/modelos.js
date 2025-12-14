@@ -93,12 +93,12 @@ Tag.belongsToMany(Nota, {
 
 
 
-// // comentar para não ficar sincronizando o banco de dados toda hora.
-// // cria um modelo par sincronizar com o banco de dados
-// sequelize.sync({ alter: true }).then(() => { // alter: true, para aplicar alterações de código no BD
-//     console.log('Modelos sincronizados com o banco de dados.');
-// }).catch((error) => {
-//     console.error('Erro ao sincronizar modelos com o banco de dados: ', error);
-// });
+// comentar para não ficar sincronizando o banco de dados toda hora.
+// cria um modelo par sincronizar com o banco de dados
+sequelize.sync({ alter: true }).then(() => { // alter: true, para aplicar alterações de código no BD
+    console.log('Modelos sincronizados com o banco de dados.');
+}).catch((error) => {
+    console.error('Erro ao sincronizar modelos com o banco de dados: ', error);
+});
 
 module.exports = Nota;
