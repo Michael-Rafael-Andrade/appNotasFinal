@@ -1,3 +1,48 @@
+{{#if notas}}
+    <div class="row border p-1 bg-light">
+        <div class="col-2 d-none d-md-block text-center">ID</div>
+        <div class="col text-center">Título</div>
+        <div class="col-2 d-none d-sm-block text-center">Alterar Status</div>
+    </div>
+    {{#each notas}}
+        <div class="row border p-1">
+            {{#if this.lida}}
+                <div class="col-2 d-none d-md-block">{{this.id}}</div>
+                <div class="col"><a href="/nota/consulta/{{this.id}}" class="limpo">{{this.titulo}}</a></div>
+                <div class="col-2 d-none d-sm-block text-center"><a href="/nota/naolida/{{this.id}}" class="limpo"></a></div> 
+
+            {{else}}
+                <div class="col-2 d-nome d-md-block"><b>{{this.id}}</b></div>
+                <div class="col"><b><a href="/nota/consulta/{{this.id}}" class="limpo">{{this.titulo}}</a></b></div>
+                <div class="col-2 d-none d-sm-block text-center"><a href="/nota/lida/{{this.id}}" class="limpo"></a></div>
+            {{/if}}
+        </div>
+        {{/each}}
+
+    {{else}}
+        {{#if pesquisa}}
+            <br><br>
+            <h4><i>Sem resultados para a pesquisa realizada.</i></h4>
+        {{else}}
+            <br><br>
+            <h4><i>Ainda não há nenhuma nota cadastrada.</i></h4>
+            <p><a href="/nota/cria">Cadastre a sua primeira nota.</a></p>
+        {{/if}}
+    {{/if}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- 
 <div class="container-fluid">
     {{!-- 1. Se NÃO houver notas, exibe a mensagem --}}
     {{#unless notas}}
@@ -50,4 +95,4 @@
         </tbody>
     </table>
     {{/if}}
-</div>
+</div> --}}

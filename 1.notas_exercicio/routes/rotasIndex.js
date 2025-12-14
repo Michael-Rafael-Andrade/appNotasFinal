@@ -4,7 +4,10 @@ var controllerIndex = require('../controller/controllerIndex.js') // importar o 
 
 
 /* GET home page. */
-router.get('/', controllerIndex.tela_principal);
+router.get('/', controllerIndex.get_tela_principal);
+
+/* POST home page. */
+router.post('/', controllerIndex.post_tela_principal);
 
 /* GET página sobre */
 router.get('/sobre', controllerIndex.sobre);
