@@ -249,30 +249,59 @@ exports.relatorio = async function(req, res){
 
     const notas_por_usuario = [];
     const usuarios = await Usuario.findAll();
-    // ficou faltando escrever não apareceu na tela! .....
-    //....
-}
+    for(const usuario of usuarios){
+        const num_notas = await usuario.countNota()
+        notas_por_usuario.push({
+            usuario: usuario.nome,
+            num_notas: num_notas,
+        })
+    }
 
-exports.mudaStatus = async function (req, res) {
-    var id = req.params.id; // obtém o id
-    var nota = await Nota.findByPk(id); // var nota recebe os dados ref id
+    const notas_por_tag = []
+    const tags = await Tag.findAll()
+    for(const tag of tags){
+        const num_tags = await tag.countNota()
+        notas_por_tag.push({
+            tag: tag.tag,
+            num_tags: num_tags,
+        })
+    }
 
-    // Lógica crucia: invete o valor booleano atual de 'lida'
-    const novo_status = !nota.lida;
+    const contexto = {
+        titulo_pagina: "Relatorio de Dados",
+        info: {
+            num_usuarios: total_usuarios,
+            num_notas: total_notas,
+            num_tags: total_tags,
+            notas_por_usuario: notas_por_usuario,
+            notas_por_tag: notas_por_tag,
+        }
+    }
+
+    res.render('relatorio', contexto);
     
-    // Atualiza apenas o campo 'lida'
-    await Nota.update(
-        { lida: novo_status },
-        { where: { id: id }}
-        
-    );
-    res.redirect('/');
 }
 
-// Helper interno simplificado para criar o contexto da view
-function mapNotaToContext(nota) {
-    const dados = nota.get(); 
-    dados.status = dados.lida ? 'lida' : 'não lida';
-    return dados;
-}
+// exports.mudaStatus = async function (req, res) {
+//     var id = req.params.id; // obtém o id
+//     var nota = await Nota.findByPk(id); // var nota recebe os dados ref id
+
+//     // Lógica crucia: invete o valor booleano atual de 'lida'
+//     const novo_status = !nota.lida;
+    
+//     // Atualiza apenas o campo 'lida'
+//     await Nota.update(
+//         { lida: novo_status },
+//         { where: { id: id }}
+        
+//     );
+//     res.redirect('/');
+// }
+
+// // Helper interno simplificado para criar o contexto da view
+// function mapNotaToContext(nota) {
+//     const dados = nota.get(); 
+//     dados.status = dados.lida ? 'lida' : 'não lida';
+//     return dados;
+// }
 

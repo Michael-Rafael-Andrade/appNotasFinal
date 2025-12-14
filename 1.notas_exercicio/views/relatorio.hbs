@@ -1,0 +1,19 @@
+<h2 class="titulo">Relatório de Dados Cadastrados</h2>
+<br>
+<p><b>Usuários Cadastrados: </b>{{info.num_usuarios}}</p>
+<p><b>Notas Cadastradas: </b>{{info.num_notas}}</p>
+<p><b>Tags Cadastradas: </b>{{info.num_tags}}</p>
+<hr>
+<p><b>Número de Notas de cada Usuário: </b></p>
+    {{#each info.notas_por_usuario}}
+        <span><i class="bi bi-person-circle"></i>{{this.usuario}}: {{this.num_notas}}</span><br>
+    {{/each}}
+</p>
+<p><b>Número de Notas de cada Tag: </b><br>
+    {{#each info.notas_por_tag}}
+        <span><i class="bi bi-tag"></i> {{this.tag}}: {{this.num_tags}}</span><br>
+    {{/each}}
+</p>
+
+<br>
+<a href="/">Voltar</a>

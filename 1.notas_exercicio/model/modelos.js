@@ -79,7 +79,7 @@ Tag.init(
 Nota.belongsToMany(Tag, {
     onDelete: 'CASCADE',
     onUpdate: 'RESTRICT',
-    throug: 'Nota_Tag',
+    through: 'Nota_Tag',
     foreignKey: 'nota_id',
     otherKey: 'tag_id',
 });
