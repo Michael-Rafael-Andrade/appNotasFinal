@@ -95,24 +95,34 @@ exports.altera_post = async function (req, res) {
 // cria e já exporta a função que será responsável pela exclusão da nota 
 exports.deleta = async function (req, res) {
     // informação passada como parâmetro na url
-    var chave = req.params.chave_nota;
-    await notas.deleta(chave);
+    var id = req.params.id;
+    await Nota.destroy({     // FORMA CORRETA PARA EXCLUIR UM DADO.
+        where: { id: id} });
 
     // redireciona para a página principal
     res.redirect('/');
 }
 
 exports.mudaStatus = async function (req, res) {
-    var chave = req.params.chave_nota;
-    var nota = await notas.consulta(chave);
-    if (nota.status === 'lida') {
-        nota.status = 'não lida';
-    } else {
-        nota.status = 'lida';
-    }
+    var id = req.params.id; // obtém o id
+    var nota = await Nota.findByPk(id); // var nota recebe os dados ref id
 
-    // atualiza a nota com a chave
-    await notas.atualiza(nota.chave, nota.titulo, nota.texto, nota.status);
+    // Lógica crucia: invete o valor booleano atual de 'lida'
+    const novo_status = !nota.lida;
+    
+    // Atualiza apenas o campo 'lida'
+    await Nota.update(
+        { lida: novo_status },
+        { where: { id: id }}
+        
+    );
     res.redirect('/');
+}
+
+// Helper interno simplificado para criar o contexto da view
+function mapNotaToContext(nota) {
+    const dados = nota.get(); 
+    dados.status = dados.lida ? 'lida' : 'não lida';
+    return dados;
 }
 
